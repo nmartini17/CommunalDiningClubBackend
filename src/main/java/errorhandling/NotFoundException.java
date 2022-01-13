@@ -1,9 +1,5 @@
 package errorhandling;
 
-/**
- *
- * @author lam@cphbusiness.dk
- */
 public class NotFoundException extends Exception {
 
     public NotFoundException(String message) {
@@ -13,4 +9,5 @@ public class NotFoundException extends Exception {
     public NotFoundException() {
         super("Requested item could not be found");
     }
+
 }

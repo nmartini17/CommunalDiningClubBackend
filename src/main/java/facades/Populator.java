@@ -17,15 +17,22 @@ import utils.EMF_Creator;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author tha
- */
 public class Populator {
     public static void populate(){
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory();
         EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Dinnerevent dinnerevent = new Dinnerevent(10,"Denmark", "Sinds mad", 10);
+        Member member = new Member("Vejvej 10", 22222222, "mail@email.com", 1999, 1000);
+        List<Member> memberList = new ArrayList<>();
+        memberList.add(member);
+        Assignment assignment = new Assignment("Stabil Fam", "contactInfo", memberList, dinnerevent);
+        member.addAssignment(assignment);
+        em.persist(member);
+        em.persist(assignment);
+        em.getTransaction().commit();
+        em.close();
     }
 
     public static void main(String[] args) {
