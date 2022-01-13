@@ -77,13 +77,13 @@ public class RenameMeResourceTest {
         }
     }
 
-    @Test
+    //@Test
     public void testServerIsUp() {
         given().when().get("/xxx").then().statusCode(200);
     }
 
     //This test assumes the database contains two rows
-    @Test
+    //@Test
     public void testDummyMsg() throws Exception {
         given()
                 .contentType("application/json")
@@ -93,7 +93,7 @@ public class RenameMeResourceTest {
                 .body("msg", equalTo("Hello World"));
     }
 
-    @Test
+    //@Test
     public void testCount() throws Exception {
         given()
                 .contentType("application/json")
