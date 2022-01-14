@@ -39,7 +39,7 @@ public class MemberResource {
 
     @Path("all")
     @GET
-    //@RolesAllowed({"user", "admin"})
+    @RolesAllowed({"user", "admin"})
     @Produces({MediaType.APPLICATION_JSON})
     public String getAllMembers() {
         List<MemberDTO> memberDTOList = FACADE.getAllMembers();
@@ -57,7 +57,7 @@ public class MemberResource {
 
     @Path("{id}")
     @GET
-    //@RolesAllowed({"user", "admin"})
+    @RolesAllowed({"user", "admin"})
     @Produces({MediaType.APPLICATION_JSON})
     public String getAccountAmount(@PathParam("id") int id) throws EntityNotFoundException, NotFoundException {
          MemberDTO mDTO = FACADE.getAccountStatus(id);
@@ -68,7 +68,7 @@ public class MemberResource {
     @POST
     @Consumes("application/json")
     @Produces("application/json")
-    //@RolesAllowed({"admin"})
+    @RolesAllowed({"admin"})
     public String createMember(String member) throws InvalidInputException {
         MemberDTO mDTO = GSON.fromJson(member, MemberDTO.class);
         MemberDTO newmDTO = FACADE.createMember(mDTO);

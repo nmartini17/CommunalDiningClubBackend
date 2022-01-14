@@ -7,6 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "dinnerevent")
+@NamedQuery(name = "Dinnerevent.deleteAllRows", query = "DELETE from Dinnerevent")
 public class Dinnerevent implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

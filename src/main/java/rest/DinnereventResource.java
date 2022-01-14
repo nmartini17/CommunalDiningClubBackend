@@ -33,7 +33,7 @@ public class DinnereventResource {
 
     @Path("all")
     @GET
-    //@RolesAllowed({"user", "admin"})
+    @RolesAllowed({"user", "admin"})
     @Produces({MediaType.APPLICATION_JSON})
     public String getAllDinners() {
         List<DinnereventDTO> dinnereventDTOList = FACADE.getAllEvents();
@@ -43,7 +43,7 @@ public class DinnereventResource {
     @POST
     @Consumes("application/json")
     @Produces("application/json")
-    //@RolesAllowed({"admin"})
+    @RolesAllowed({"admin"})
     public String createEvent(String event) throws InvalidInputException {
         DinnereventDTO dDTO = GSON.fromJson(event, DinnereventDTO.class);
         DinnereventDTO newdDTO = FACADE.createEvent(dDTO);
@@ -54,6 +54,7 @@ public class DinnereventResource {
     @DELETE
     @Consumes("application/json")
     @Produces("application/json")
+    @RolesAllowed({"admin"})
     public String deletePerson(@PathParam("id") int id, String event) throws EntityNotFoundException {
         return FACADE.deleteEvent(id);
     }
@@ -62,6 +63,7 @@ public class DinnereventResource {
     @PUT
     @Consumes("application/json")
     @Produces("application/json")
+    @RolesAllowed({"admin"})
     public String editEvent(@PathParam("id")int id, String event)throws EntityNotFoundException{
         DinnereventDTO dDTO =  GSON.fromJson(event, DinnereventDTO.class);
         dDTO.setId(id);

@@ -7,6 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "member")
+@NamedQuery(name = "Member.deleteAllRows", query = "DELETE from Member")
 public class Member implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

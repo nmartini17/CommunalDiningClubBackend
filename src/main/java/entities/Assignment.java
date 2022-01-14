@@ -8,6 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "assignment")
+@NamedQuery(name = "Assignment.deleteAllRows", query = "DELETE from Assignment ")
 public class Assignment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
